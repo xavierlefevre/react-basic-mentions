@@ -1,0 +1,14 @@
+{
+  "name": "react-basic-mentions",
+  "version": "1.0.0",
+  "description": "Simple mention plugin for react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Xavier Lefevre",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^1.13.1"
+  }
+}
