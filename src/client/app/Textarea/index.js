@@ -1,6 +1,4 @@
-import React, { Component } from "react"
-
-import PropTypes from "../utils/propTypes"
+import React, { Component, PropTypes } from "react"
 import styles from "./index.css"
 
 export default class Textarea extends Component {
