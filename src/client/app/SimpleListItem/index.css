@@ -1,0 +1,13 @@
+.container {
+  border-bottom: var(--colorLightGrey) solid 1px;
+  position: relative;
+}
+
+.item {
+  font-family: var(--fontMedium);
+  font-size: 16px;
+  line-height: 18px;
+  min-height: 15px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
