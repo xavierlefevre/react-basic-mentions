@@ -1,0 +1,42 @@
+.container {
+  background: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.body {
+  margin: 0 1rem 0 1rem;
+}
+
+.inputArea {
+  max-height: 200px;
+  padding-top: 1.5rem;
+  overflow: hidden;
+  overflow-y: auto;
+  border-bottom: 1px solid var(--colorGrey);
+}
+
+.avatar {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  margin-left: 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.option {
+  font-size:14px;
+  margin-right: 12px
+}
+
+.listContainer {
+  height: 150px;
+  box-sizing: initial;
+}
