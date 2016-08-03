@@ -1,11 +1,11 @@
 import React from 'react';
-import {render} from 'react-dom';
-import CommentInput from './CommentInput'
+import ReactDOM from 'react-dom';
+import { Router, hashHistory } from 'react-router';
+import Routes from './routes';
 
-class App extends React.Component {
-  render () {
-    <CommentInput />
-  }
-}
-
-render(<App/>, document.getElementById('app'));
+ReactDOM.render(
+  <Router history={hashHistory}>
+    {Routes}
+  </Router>,
+  document.getElementById('app')
+);
