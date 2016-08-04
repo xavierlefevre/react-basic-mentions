@@ -1,13 +1,13 @@
 import React, { Component } from "react"
 import styles from "./index.css"
 import _ from "lodash"
-import SimpleListItem from "../SimpleListItem"
-import Textarea from "../Textarea"
+import ListItem from "./ListItem"
+import Textarea from "./Textarea"
 
 // TODO Improve even more the regex rule, when typed in the middle of words for instance
 const MENTION_REGEX = /(@([A-z]+)(\s[A-z]+|\s){0,2}|@)/gi
 
-export default class CommentInput extends Component {
+export default class Mentions extends Component {
 
   constructor(props) {
     super(props)
@@ -230,7 +230,7 @@ export default class CommentInput extends Component {
     if (userList && userList.items) {
       items = userList.items
       return items.map((item, index)=>(
-        <SimpleListItem
+        <ListItem
           key={ index }
           onTouchTap={ () => this.selectUser(item) }
           title={ item.name }

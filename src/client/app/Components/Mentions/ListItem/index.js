@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import styles from "./index.css"
-import Feedback from "../Feedback"
+import Feedback from "./Feedback"
 
-export default class SimpleListItem extends Component {
+export default class ListItem extends Component {
 
   static propTypes = {
     title: PropTypes.string,
