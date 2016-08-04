@@ -4,6 +4,8 @@ import _ from "lodash"
 import ListItem from "./ListItem"
 import Textarea from "./Textarea"
 
+import List from "../../FakeData"
+
 // TODO Improve even more the regex rule, when typed in the middle of words for instance
 const MENTION_REGEX = /(@([A-z]+)(\s[A-z]+|\s){0,2}|@)/gi
 
@@ -203,18 +205,7 @@ export default class Mentions extends Component {
   // - - - -
 
   renderUserList(currentMatch) {
-    const userList = [
-      {
-        name: "Jean",
-        age: 10,
-        id: "144342",
-      },
-      {
-        name: "Tom",
-        age: 20,
-        id: "153523",
-      }
-    ]
+    const userList = List
     let items
     let newList
 

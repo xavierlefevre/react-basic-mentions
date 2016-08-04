@@ -60,7 +60,7 @@ export default class ListItem extends Component {
 
     return (
       <div
-        onTouchTap={ this._onSelect }
+        onClick={ this._onSelect }
         onTouchStart={ this.touchStart }
         onTouchMove={ this.touchMove }
         onTouchEnd={ this.touchEnd }
