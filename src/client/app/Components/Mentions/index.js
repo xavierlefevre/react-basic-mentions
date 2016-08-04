@@ -25,7 +25,12 @@ export default class Mentions extends Component {
   }
 
   onTextareaKeyUp(event) {
-    if (typeof window.getSelection != "undefined") {
+    if (event.keyCode == 13) {
+      this.showUserList(false)
+    } else if (typeof window.getSelection != "undefined"
+      && event.keyCode != 16
+      && event.keyCode != 20
+    ) {
       const selection = window.getSelection()
       const childNodes = this.textareaElement.childNodes
 
@@ -197,7 +202,7 @@ export default class Mentions extends Component {
   // Render View
   // - - - -
 
-  renderUserList() {
+  renderUserList(currentMatch) {
     const userList = [
       {
         name: "Jean",
@@ -211,9 +216,19 @@ export default class Mentions extends Component {
       }
     ]
     let items
+    let newList
 
-    if (userList) {
-      return userList.map((item, index)=>(
+    if (currentMatch[2]) {
+      newList = userList.filter((element) => {
+        const match = element.name.toLowerCase().match(currentMatch[2].toLowerCase())
+        return match
+      })
+    } else {
+      newList = userList
+    }
+
+    if (newList) {
+      return newList.map((item, index)=>(
         <ListItem
           key={ index }
           onTouchTap={ () => this.selectUser(item) }
@@ -239,7 +254,7 @@ export default class Mentions extends Component {
             />
           </div>
           <div className={ styles.listContainer }>
-            { this.state.showUserList && this.renderUserList() }
+            { this.state.showUserList && this.renderUserList(this.currentMatch) }
           </div>
         </div>
       </div>
