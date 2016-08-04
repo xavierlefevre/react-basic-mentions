@@ -13,6 +13,7 @@ export default class Mentions extends Component {
     super(props)
     this.state = {
       isAnyItemSelected: false,
+      showUserList: false,
     }
     this.editedNode = null
     this.matchArray = []
@@ -24,6 +25,7 @@ export default class Mentions extends Component {
   }
 
   onTextareaKeyUp(event) {
+    console.log("event", event)
     if (typeof window.getSelection != "undefined") {
       const selection = window.getSelection()
       const childNodes = this.textareaElement.childNodes
@@ -43,26 +45,12 @@ export default class Mentions extends Component {
     }
   }
 
-  // watchEnterKey(event, textareaDiv) {
-  //   const enterKeyCode = 13
-  //   if ((event.keyCode || event.which) == enterKeyCode) {
-  //     event.preventDefault()
-  //     Replace div generated at line break by br
-  //     textareaDiv.innerHTML = textareaDiv.innerHTML.replace(
-  //       /<div>/gi,
-  //       "<br/>",
-  //     ).replace(
-  //       /<\/div>/gi,
-  //       "",
-  //     )
-  //   }
-  // }
-
   // - - - -
   // Handle Mention Logic
   // - - - -
 
   watchRegex(selection) {
+    console.log("selection", selection)
     const matchArray = []
     const text = selection.anchorNode.textContent
     let currentMatch
@@ -227,9 +215,8 @@ export default class Mentions extends Component {
     ]
     let items
 
-    if (userList && userList.items) {
-      items = userList.items
-      return items.map((item, index)=>(
+    if (userList) {
+      return userList.map((item, index)=>(
         <ListItem
           key={ index }
           onTouchTap={ () => this.selectUser(item) }
@@ -249,7 +236,7 @@ export default class Mentions extends Component {
         >
           <div className={ styles.inputArea } ref="inputArea">
             <Textarea
-              placeholder={ Translator.translate("social.comment.enter") }
+              placeholder={ "Enter a comment" }
               ref="textarea"
               onKeyUp={ (e) => this.onTextareaKeyUp(e) }
             />

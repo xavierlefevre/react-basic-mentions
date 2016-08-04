@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React, { Component, PropTypes } from "react"
 import styles from "./index.css"
 import Feedback from "./Feedback"
 
