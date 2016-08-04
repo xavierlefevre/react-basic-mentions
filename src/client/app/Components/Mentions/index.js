@@ -25,7 +25,6 @@ export default class Mentions extends Component {
   }
 
   onTextareaKeyUp(event) {
-    console.log("event", event)
     if (typeof window.getSelection != "undefined") {
       const selection = window.getSelection()
       const childNodes = this.textareaElement.childNodes
@@ -50,7 +49,6 @@ export default class Mentions extends Component {
   // - - - -
 
   watchRegex(selection) {
-    console.log("selection", selection)
     const matchArray = []
     const text = selection.anchorNode.textContent
     let currentMatch
@@ -170,7 +168,6 @@ export default class Mentions extends Component {
 
   onCommentPost() {
     const commenttext = this.generateFinalComment(this.refs.textarea.refs.div)
-    console.log(commenttext)
   }
 
   generateFinalComment(DOMParent) {
