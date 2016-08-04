@@ -27,9 +27,7 @@ export default class Mentions extends Component {
   }
 
   onTextareaKeyUp(event) {
-    if (event.keyCode == 13) {
-      this.showUserList(false)
-    } else if (typeof window.getSelection != "undefined"
+    if (typeof window.getSelection != "undefined"
       && event.keyCode != 16
       && event.keyCode != 20
     ) {
@@ -44,6 +42,8 @@ export default class Mentions extends Component {
           && event.keyCode != 39
           && event.keyCode != 40) {
           this.removeMention(this.textareaElement, selection.anchorNode.parentElement)
+        } else if (event.keyCode == 13) {
+          this.state.showUserList && this.showUserList(false)
         } else {
           this.watchRegex(selection)
         }
@@ -87,7 +87,7 @@ export default class Mentions extends Component {
       // Updates the current match in order to know what to replace it in the text later
       this.currentMatch = currentMatch
       // Removes the @ and potential end spaces
-      const currentMatchText = currentMatch[2] && currentMatch[2].trim()
+      const currentMatchText = currentMatch[1] && currentMatch[1].substring(1).trim()
       this.debouncedFetchUsers()
     } else {
       this.cancelFetch()
@@ -134,7 +134,7 @@ export default class Mentions extends Component {
   insertMentionInText(userID, userName) {
     const editedNodeText = this.editedNode.textContent
     const matchIndex = this.currentMatch.index
-    const matchedString = this.currentMatch[2]
+    const matchedString = this.currentMatch[1].substring(1).trim()
 
     const begText = document.createTextNode(
       editedNodeText.substr(0, matchIndex) || "\u00A0"
@@ -209,9 +209,9 @@ export default class Mentions extends Component {
     let items
     let newList
 
-    if (currentMatch[2]) {
+    if (currentMatch[1]) {
       newList = userList.filter((element) => {
-        const match = element.name.toLowerCase().match(currentMatch[2].toLowerCase())
+        const match = element.name.toLowerCase().match(currentMatch[1].substring(1).trim().toLowerCase())
         return match
       })
     } else {
