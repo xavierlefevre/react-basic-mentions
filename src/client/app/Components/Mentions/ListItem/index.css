@@ -1,10 +1,11 @@
 .container {
-  border-bottom: var(--colorLightGrey) solid 1px;
+  border-bottom: #E1E1E1 solid 1px;
   position: relative;
 }
 
 .item {
-  font-family: var(--fontMedium);
+  font-family: 'Lato', sans-serif;
+  color: #232323;
   font-size: 16px;
   line-height: 18px;
   min-height: 15px;

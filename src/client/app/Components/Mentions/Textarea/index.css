@@ -1,17 +1,11 @@
 .textarea {
-  display: inline-block;
-  border: 0;
-  width: calc(100% - 80px);
-  padding: 0;
-  padding-top: 0.5rem;
+  height: calc(100% - 20px);
+  padding: 10px;
   font-size: 18px;
-  outline: none;
-  background: transparent;
-  color: black;
-  font-family: var(--fontRegular);
-  padding-bottom: 25px;
-  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+  color: #232323;
   line-height: 19px;
   -webkit-user-select: text;
   user-select: text;
+  outline: none;
 }

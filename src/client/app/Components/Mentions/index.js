@@ -1,20 +1,21 @@
-import React, { Component } from "react"
+import React, { Component, PropTypes } from "react"
 import styles from "./index.css"
 import _ from "lodash"
 import ListItem from "./ListItem"
 import Textarea from "./Textarea"
-
-import List from "../../FakeData"
 
 // TODO Improve even more the regex rule, when typed in the middle of words for instance
 const MENTION_REGEX = /(@([A-z]+)(\s[A-z]+|\s){0,2}|@)/gi
 
 export default class Mentions extends Component {
 
+  static propTypes = {
+    list: PropTypes.array.isRequired,
+  };
+
   constructor(props) {
     super(props)
     this.state = {
-      isAnyItemSelected: false,
       showUserList: false,
     }
     this.editedNode = null
@@ -143,7 +144,7 @@ export default class Mentions extends Component {
     const insertedName = document.createElement("span")
     insertedName.innerHTML = userName
     insertedName.style.color = "#00A0EE"
-    insertedName.style.fontFamily = "maven-medium"
+    insertedName.style.fontFamily = "lato, sans-serif"
     insertedName.id = userID
 
     const endTextStartingPoint = matchedString ? matchedString.length + matchIndex + 1 : matchIndex + 1
@@ -193,19 +194,11 @@ export default class Mentions extends Component {
   }
 
   // - - - -
-  // User List Click Logic
-  // - - - -
-
-  setAnyItemSelected(isAnyItemSelected) {
-    this.setState({ isAnyItemSelected })
-  }
-
-  // - - - -
   // Render View
   // - - - -
 
   renderUserList(currentMatch) {
-    const userList = List
+    const userList = this.props.list
     let items
     let newList
 
@@ -222,10 +215,8 @@ export default class Mentions extends Component {
       return newList.map((item, index)=>(
         <ListItem
           key={ index }
-          onTouchTap={ () => this.selectUser(item) }
+          onClick={ () => this.selectUser(item) }
           title={ item.name }
-          setAnyItemSelected={ (isAnyItemSelected) => this.setAnyItemSelected(isAnyItemSelected) }
-          isAnyItemSelected={ this.state.isAnyItemSelected }
         />
       ))
     }
@@ -234,19 +225,15 @@ export default class Mentions extends Component {
   render() {
     return (
       <div className={ styles.container }>
-        <div
-          className={ styles.body }
-        >
-          <div className={ styles.inputArea } ref="inputArea">
-            <Textarea
-              placeholder={ "Enter a comment" }
-              ref="textarea"
-              onKeyUp={ (e) => this.onTextareaKeyUp(e) }
-            />
-          </div>
-          <div className={ styles.listContainer }>
-            { this.state.showUserList && this.renderUserList(this.currentMatch) }
-          </div>
+        <div className={ styles.inputArea } ref="inputArea">
+          <Textarea
+            placeholder={ "Enter a comment" }
+            ref="textarea"
+            onKeyUp={ (e) => this.onTextareaKeyUp(e) }
+          />
+        </div>
+        <div className={ styles.listContainer }>
+          { this.state.showUserList && this.renderUserList(this.currentMatch) }
         </div>
       </div>
     )
