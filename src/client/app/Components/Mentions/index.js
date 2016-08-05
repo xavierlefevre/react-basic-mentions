@@ -145,6 +145,8 @@ export default class Mentions extends Component {
     insertedName.innerHTML = userName
     insertedName.style.color = "#00A0EE"
     insertedName.style.fontFamily = "lato, sans-serif"
+    insertedName.style.background = "rgb(202, 238, 255)"
+    insertedName.style.borderRadius = "5px"
     insertedName.id = userID
 
     const endTextStartingPoint = matchedString ? matchedString.length + matchIndex + 1 : matchIndex + 1
