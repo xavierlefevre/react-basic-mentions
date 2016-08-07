@@ -6,6 +6,7 @@ export default class Textarea extends Component {
   static propTypes = {
     placeholder: PropTypes.string,
     onKeyUp: PropTypes.func,
+    onKeyDown: PropTypes.func,
   }
 
   getEditableDiv() {
@@ -16,10 +17,11 @@ export default class Textarea extends Component {
     // TODO add a javascript faked placeholder to the textarea
     return (
       <div
-        className={ styles.textarea }
         ref="div"
         id="div"
+        className={ styles.textarea }
         onKeyUp={ this.props.onKeyUp }
+        onKeyDown={ this.props.onKeyDown }
         contentEditable
         onCopy={ (clipboard) => {
           // TODO think a proper logic for the copy/paste action

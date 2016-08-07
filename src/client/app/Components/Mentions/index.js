@@ -11,6 +11,7 @@ export default class Mentions extends Component {
 
   static propTypes = {
     list: PropTypes.array.isRequired,
+    mentionStyle: PropTypes.object,
   };
 
   constructor(props) {
@@ -21,6 +22,14 @@ export default class Mentions extends Component {
     this.editedNode = null
     this.matchArray = []
     this.currentMatch = null
+
+    this.defaultMentionStyle = {
+      color: "#00A0EE",
+      fontFamily: "lato, sans-serif",
+      background: "rgb(202, 238, 255)",
+      borderRadius: "5px",
+      padding: "0 5px 0 5px",
+    }
   }
 
   componentDidMount() {
@@ -28,28 +37,71 @@ export default class Mentions extends Component {
   }
 
   onTextareaKeyUp(event) {
+    const SHIFT_KEY = 16
+    const CAPS_KEY = 20
+
     if (typeof window.getSelection != "undefined"
-      && event.keyCode != 16
-      && event.keyCode != 20
+      && event.keyCode != SHIFT_KEY
+      && event.keyCode != CAPS_KEY
     ) {
       const selection = window.getSelection()
       const childNodes = this.textareaElement.childNodes
 
       if (childNodes) {
-        // Checks if a Mention is being altered (except arrow keys), if yes deletes it
-        if (selection.anchorNode.parentElement.localName == "span"
-          && event.keyCode != 37
-          && event.keyCode != 38
-          && event.keyCode != 39
-          && event.keyCode != 40) {
-          this.removeMention(this.textareaElement, selection.anchorNode.parentElement)
-        } else if (event.keyCode == 13) {
-          this.state.showUserList && this.showUserList(false)
-        } else {
-          this.watchRegex(selection)
-        }
+        this.watchRegex(selection)
       }
     }
+  }
+
+  // - - - -
+  // Prevents Wrong Enter Event
+  // - - - -
+
+  onTextareaKeyDown(event) {
+    const ENTER_KEY = 13
+    const SHIFT_KEY = 16
+    const CAPS_KEY = 20
+    const LEFT_ARROW_KEY = 37
+    const UP_ARROW_KEY = 38
+    const RIGHT_ARROW_KEY = 39
+    const ROWN_ARROW_KEY = 40
+
+    if (typeof window.getSelection != "undefined"
+      && event.keyCode != SHIFT_KEY
+      && event.keyCode != CAPS_KEY
+    ) {
+      const selection = window.getSelection()
+      // Checks if a Mention is being altered (except arrow keys), if yes deletes it
+      if (selection.anchorNode.parentElement.localName == "span"
+        && event.keyCode != LEFT_ARROW_KEY
+        && event.keyCode != UP_ARROW_KEY
+        && event.keyCode != RIGHT_ARROW_KEY
+        && event.keyCode != ROWN_ARROW_KEY) {
+        this.removeMention(this.textareaElement, selection.anchorNode.parentElement)
+      }
+    }
+
+    if (event.keyCode == ENTER_KEY) {
+      // TODO The first "enter" at the end of the comment won't return to the line, but then it is fine
+      // document.execCommand('insertHTML', false, '<br><br>')
+      event.preventDefault()
+      this.enterAction()
+      this.state.showUserList && this.showUserList(false)
+    }
+  }
+
+  enterAction() {
+    let selection = window.getSelection()
+    let range = selection.getRangeAt(0)
+    let newline = document.createElement("br")
+
+    range.deleteContents()
+    range.insertNode(newline)
+    range.setStartAfter(newline)
+    range.setEndAfter(newline)
+    range.collapse(false)
+    selection.removeAllRanges()
+    selection.addRange(range)
   }
 
   // - - - -
@@ -141,12 +193,14 @@ export default class Mentions extends Component {
       editedNodeText.substr(0, matchIndex) || "\u00A0"
     )
 
+    const mentionStyle = { ...this.defaultMentionStyle, ...this.props.mentionStyle }
     const insertedName = document.createElement("span")
     insertedName.innerHTML = userName
-    insertedName.style.color = "#00A0EE"
-    insertedName.style.fontFamily = "lato, sans-serif"
-    insertedName.style.background = "rgb(202, 238, 255)"
-    insertedName.style.borderRadius = "5px"
+    insertedName.style.color = mentionStyle.color
+    insertedName.style.fontFamily = mentionStyle.fontFamily
+    insertedName.style.background = mentionStyle.background
+    insertedName.style.borderRadius = mentionStyle.borderRadius
+    insertedName.style.padding = mentionStyle.padding
     insertedName.id = userID
 
     const endTextStartingPoint = matchedString ? matchedString.length + matchIndex + 1 : matchIndex + 1
@@ -232,6 +286,7 @@ export default class Mentions extends Component {
             placeholder={ "Enter a comment" }
             ref="textarea"
             onKeyUp={ (e) => this.onTextareaKeyUp(e) }
+            onKeyDown={ (e) => this.onTextareaKeyDown(e) }
           />
         </div>
         <div className={ styles.listContainer }>

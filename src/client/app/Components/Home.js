@@ -10,6 +10,7 @@ export default class Home extends Component {
       <div className={ styles.container }>
         <Mentions
           list={ list }
+          mentionStyle={ { color: "black", background: "grey" } }
         />
       </div>
     );
