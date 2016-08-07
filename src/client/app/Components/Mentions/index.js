@@ -64,7 +64,8 @@ export default class Mentions extends Component {
     const LEFT_ARROW_KEY = 37
     const UP_ARROW_KEY = 38
     const RIGHT_ARROW_KEY = 39
-    const ROWN_ARROW_KEY = 40
+    const DOWN_ARROW_KEY = 40
+    const CMD_KEY = 91
 
     if (typeof window.getSelection != "undefined"
       && event.keyCode != SHIFT_KEY
@@ -72,11 +73,13 @@ export default class Mentions extends Component {
     ) {
       const selection = window.getSelection()
       // Checks if a Mention is being altered (except arrow keys), if yes deletes it
+      // TODO find a better way to auto-delete spans, instead of listing all keys
       if (selection.anchorNode.parentElement.localName == "span"
         && event.keyCode != LEFT_ARROW_KEY
         && event.keyCode != UP_ARROW_KEY
         && event.keyCode != RIGHT_ARROW_KEY
-        && event.keyCode != ROWN_ARROW_KEY) {
+        && event.keyCode != DOWN_ARROW_KEY
+        && event.keyCode != CMD_KEY) {
         this.removeMention(this.textareaElement, selection.anchorNode.parentElement)
       }
     }
