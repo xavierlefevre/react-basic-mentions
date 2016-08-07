@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Mentions from './Mentions';
+import Mentions from '../../../src/Mentions';
 
 import styles from "./Home.css";
 import list from "../FakeData";

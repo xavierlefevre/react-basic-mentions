@@ -1,8 +1,9 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
-var APP_DIR = path.resolve(__dirname, 'src/client/app');
+var BUILD_DIR = path.resolve(__dirname, 'testArea/public');
+var APP_DIR = path.resolve(__dirname, 'testArea/app');
+var PACKAGE_DIR = path.resolve(__dirname, 'src/');
 
 var config = {
   entry: [
@@ -16,7 +17,7 @@ var config = {
       {
         loader: "babel-loader",
         test : /\.jsx?/,
-        include : APP_DIR,
+        include : [APP_DIR, PACKAGE_DIR],
         query : {
           plugins: ['transform-runtime'],
           presets: ['es2015', 'stage-0', 'react'],
