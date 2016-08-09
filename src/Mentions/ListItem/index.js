@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react"
-import styles from "./index.css"
+import styles from "./styles.js"
 import Feedback from "./Feedback"
 
 export default class ListItem extends Component {
@@ -7,17 +7,19 @@ export default class ListItem extends Component {
   static propTypes = {
     title: PropTypes.string,
     onClick: PropTypes.func.isRequired,
+    itemContainerStyle: PropTypes.object,
+    itemStyle: PropTypes.object,
   };
 
   render() {
     return (
       <div
         onClick={ this.props.onClick }
-        className={ styles.container }
+        style={ { ...styles.defaultItemContainerStyle, ...this.props.itemContainerStyle } }
       >
         { false && <Feedback /> }
         <div
-          className={ styles.item }
+          style={ { ...styles.defaultItemStyle, ...this.props.itemStyle } }
         >
           { this.props.title }
         </div>

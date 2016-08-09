@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from "react"
-import styles from "./index.css"
+import styles from "./styles.js"
 
 export default class Textarea extends Component {
 
   static propTypes = {
     placeholder: PropTypes.string,
+    textareaStyle: PropTypes.object,
     onKeyUp: PropTypes.func,
     onKeyDown: PropTypes.func,
   }
@@ -19,7 +20,7 @@ export default class Textarea extends Component {
       <div
         ref="div"
         id="div"
-        className={ styles.textarea }
+        style={ { ...styles.defaultTextareaStyle, ...this.props.textareaStyle } }
         onKeyUp={ this.props.onKeyUp }
         onKeyDown={ this.props.onKeyDown }
         contentEditable

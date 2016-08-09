@@ -1,8 +1,9 @@
 import React, { Component } from "react"
-import styles from "./index.css"
+import styles from "./styles.js"
 
 export default class Feedback extends Component {
+  // Not used yet in the package
   render() {
-    return <div className={ styles.overlay }></div>
+    return <div style={ styles.overlay }></div>
   }
 }

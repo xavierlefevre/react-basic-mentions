@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react"
-import styles from "./index.css"
+import styles from "./styles.js"
 import _ from "lodash"
 import ListItem from "./ListItem"
 import Textarea from "./Textarea"
@@ -12,6 +12,11 @@ export default class Mentions extends Component {
   static propTypes = {
     list: PropTypes.array.isRequired,
     mentionStyle: PropTypes.object,
+    inputAreaStyle: PropTypes.object,
+    listContainerStyle: PropTypes.object,
+    textareaStyle: PropTypes.object,
+    itemContainerStyle: PropTypes.object,
+    itemStyle: PropTypes.object,
   };
 
   constructor(props) {
@@ -22,14 +27,6 @@ export default class Mentions extends Component {
     this.editedNode = null
     this.matchArray = []
     this.currentMatch = null
-
-    this.defaultMentionStyle = {
-      color: "#00A0EE",
-      fontFamily: "lato, sans-serif",
-      background: "rgb(202, 238, 255)",
-      borderRadius: "5px",
-      padding: "0 5px 0 5px",
-    }
   }
 
   componentDidMount() {
@@ -196,7 +193,7 @@ export default class Mentions extends Component {
       editedNodeText.substr(0, matchIndex) || "\u00A0"
     )
 
-    const mentionStyle = { ...this.defaultMentionStyle, ...this.props.mentionStyle }
+    const mentionStyle = { ...styles.defaultMentionStyle, ...this.props.mentionStyle }
     const insertedName = document.createElement("span")
     insertedName.innerHTML = userName
     insertedName.style.color = mentionStyle.color
@@ -276,6 +273,8 @@ export default class Mentions extends Component {
           key={ index }
           onClick={ () => this.selectUser(item) }
           title={ item.name }
+          itemContainerStyle={ this.props.itemContainerStyle }
+          itemStyle={ this.props.itemStyle }
         />
       ))
     }
@@ -283,16 +282,17 @@ export default class Mentions extends Component {
 
   render() {
     return (
-      <div className={ styles.container }>
-        <div className={ styles.inputArea } ref="inputArea">
+      <div style={ styles.containerStyle }>
+        <div style={ { ...styles.defaultInputAreaStyle, ...this.props.inputAreaStyle } } ref="inputArea">
           <Textarea
             placeholder={ "Enter a comment" }
             ref="textarea"
+            textareaStyle={ this.props.textareaStyle }
             onKeyUp={ (e) => this.onTextareaKeyUp(e) }
             onKeyDown={ (e) => this.onTextareaKeyDown(e) }
           />
         </div>
-        <div className={ styles.listContainer }>
+        <div style={ { ...styles.defaultListContainerStyle, ...this.props.listContainer } }>
           { this.state.showUserList && this.renderUserList(this.currentMatch) }
         </div>
       </div>
