@@ -79,5 +79,6 @@ Check the "to improve" section below to understand what's remaining to do and no
 
 #### Readme
 
+- [ ] - Show a picture of the component
 - [ ] - Detail default style
 - [ ] - Give examples
