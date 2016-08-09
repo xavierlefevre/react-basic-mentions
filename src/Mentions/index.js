@@ -12,7 +12,6 @@ export default class Mentions extends Component {
   static propTypes = {
     list: PropTypes.array.isRequired,
     mentionStyle: PropTypes.object,
-    inputAreaStyle: PropTypes.object,
     listContainerStyle: PropTypes.object,
     textareaStyle: PropTypes.object,
     itemContainerStyle: PropTypes.object,
@@ -283,15 +282,13 @@ export default class Mentions extends Component {
   render() {
     return (
       <div style={ styles.containerStyle }>
-        <div style={ { ...styles.defaultInputAreaStyle, ...this.props.inputAreaStyle } } ref="inputArea">
-          <Textarea
-            placeholder={ "Enter a comment" }
-            ref="textarea"
-            textareaStyle={ this.props.textareaStyle }
-            onKeyUp={ (e) => this.onTextareaKeyUp(e) }
-            onKeyDown={ (e) => this.onTextareaKeyDown(e) }
-          />
-        </div>
+        <Textarea
+          placeholder={ "Enter a comment" }
+          ref="textarea"
+          textareaStyle={ this.props.textareaStyle }
+          onKeyUp={ (e) => this.onTextareaKeyUp(e) }
+          onKeyDown={ (e) => this.onTextareaKeyDown(e) }
+        />
         <div style={ { ...styles.defaultListContainerStyle, ...this.props.listContainer } }>
           { this.state.showUserList && this.renderUserList(this.currentMatch) }
         </div>

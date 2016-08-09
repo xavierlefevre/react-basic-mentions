@@ -2,18 +2,9 @@
 
 React Basic Mentions is a first shot at a mention system : a user can mention someone in a comment (like Twitter or Facebook) with a "@".
 
-### To notice
+The user will enter a comment in the textarea, and when needed mention someone with a "@". The list of potential users will appear below the textarea, and on select, the matching string will be replaced by the name of the user with a specific style. Any modification to the mentioned user will remove it.
 
-Before anything, this is my first package, and it has been built recently, and is still under improvements. I am doing my best to make it great. If you encounter either a bug, or a lacking feature, don't hesitate to raise an issue! It is always amazing to have feedbacks from other developers, and much needed, otherwise my package has no purpose.
-
-Do not hesitate to go check the other react package "React Mentions", much more advanced. Simply that it was not exactly fitting my needs, hence I prefered to build another one.
-
-What did I do differently?
-- You can "only" mention with a "@" for the moment
-- The list of users appear beneath the textarea and is not floating, it was necessary for making it work well on mobile
-- I used a div contenteditable for the textarea
-
-Check the "to improve" section below to understand what's remaining to do and not yet perfect
+**/!\  NOT YET AVAILABLE ON NPM  /!\**
 
 ### Getting started
 
@@ -54,24 +45,39 @@ itemContainerStyle: PropTypes.object,
 itemStyle: PropTypes.object,
 ```
 
+### To notice
+
+Before anything, this is my first package. I am doing my best to make it great. If you encounter either a bug, or a lacking feature, don't hesitate to raise an issue! It is always amazing to have feedbacks from other developers, and much needed, otherwise my package has no purpose.
+
+Do not hesitate to go check the other react package "React Mentions", much more advanced. Simply that it was not exactly fitting my needs, hence I prefered to build another one.
+
+What did I do differently?
+- You can "only" mention with a "@" for the moment
+- The list of users appear beneath the textarea and is not floating, it was necessary for making it work well on mobile
+- I used a div contenteditable for the textarea
+
+Check the "to improve" section below to understand what's remaining to do and not yet perfect
+
 ### To improve
+
+- [ ] - Retrieve the full comment from the parent component
 
 #### Bugs
 
-- [X] - iOS: a weird behavior of copy/pasting can happen
-- [X] - Refine which key when hit can delete a mentionned user
-- [X] - The first time you hit "enter" at the end of the textarea, it won't yet break the line, the following "enter" will work
-- [X] - If the user selects half of a mention and a bit of other texts, then deletes, it won't make the mention disappear
+- [ ] - iOS: a weird behavior of copy/pasting can happen
+- [ ] - Refine which key when hit can delete a mentionned user
+- [ ] - The first time you hit "enter" at the end of the textarea, it won't yet break the line, the following "enter" will work
+- [ ] - If the user selects half of a mention and a bit of other texts, then deletes, it won't make the mention disappear
 
 #### Features
 
-- [X] - Allow for other "markers" and not only "@"
-- [X] - Offer the possibility to put a placeholder in the textarea
-- [X] - Option to filter the list through your own back-end calls
-- [X] - Thinks of a loader
-- [X] - Add a feedback on click or touch
+- [ ] - Allow for other "markers" and not only "@"
+- [ ] - Offer the possibility to put a placeholder in the textarea
+- [ ] - Option to filter the list through your own back-end calls
+- [ ] - Thinks of a loader
+- [ ] - Add a feedback on click or touch
 
 #### Readme
 
-- [X] - Detail default style
-- [X] - Give examples
+- [ ] - Detail default style
+- [ ] - Give examples

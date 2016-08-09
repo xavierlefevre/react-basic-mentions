@@ -10,13 +10,6 @@ export default {
     borderRadius: "5px",
     padding: "0 5px 0 5px",
   },
-  defaultInputAreaStyle: {
-    height: '200px',
-    overflow: 'hidden',
-    border: '#E1E1E1 solid 1px',
-    background: '#F9F9F9',
-    overflowY: 'auto',
-  },
   defaultListContainerStyle: {
     height: '200px',
   },
