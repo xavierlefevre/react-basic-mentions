@@ -80,14 +80,13 @@ export default class Mentions extends Component {
         && event.keyCode != CMD_KEY) {
         this.removeMention(this.textareaElement, selection.anchorNode.parentElement)
       }
-    }
-
-    if (event.keyCode == ENTER_KEY) {
-      // TODO The first "enter" at the end of the comment won't return to the line, but then it is fine
-      // document.execCommand('insertHTML', false, '<br><br>')
-      event.preventDefault()
-      this.enterAction()
-      this.state.showUserList && this.showUserList(false)
+      if (event.keyCode == ENTER_KEY) {
+        // TODO The first "enter" at the end of the comment won't return to the line, but then it is fine
+        // document.execCommand('insertHTML', false, '<br><br>')
+        event.preventDefault()
+        this.enterAction()
+        this.state.showUserList && this.showUserList(false)
+      }
     }
   }
 

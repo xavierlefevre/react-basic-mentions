@@ -64,7 +64,7 @@ Check the "to improve" section below to understand what's remaining to do and no
 
 ### To improve
 
-- [ ] - Retrieve the full comment from the parent component
+- [X] - Retrieve the full comment from the parent component
 
 #### Bugs
 
