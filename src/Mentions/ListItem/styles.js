@@ -11,5 +11,6 @@ export default {
     minHeight: '15px',
     paddingTop: '12px',
     paddingBottom: '12px',
+    cursor: 'default',
   },
 }

@@ -31,8 +31,12 @@ And then add it somewhere in your JSX:
 ### Props
 
 ```javascript
-// The array list from which to mention, must include a "name" and an "id" property so far
+// The array list from which to mention, must include a "name" and an "id" property, the first for display, the second as the key for your API
 list: PropTypes.array.isRequired,
+// Setter building the final comment all along the typing of the comment, in order to retrieve it and send it to your API
+// If the comment is : Hello Daniel, How are you?
+// The parsedComment is : Hello [144342], how are you?
+setParsedComment: PropTypes.func,
 // The inline style of the mentionned name, by default the text is blue, and the background light-blue
 mentionStyle: PropTypes.object,
 // The inline style of the container around the list

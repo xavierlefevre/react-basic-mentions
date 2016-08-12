@@ -25,7 +25,7 @@ export default class Home extends Component {
         </div>
         <Mentions
           list={ list }
-          setFinalComment={ (comment) => this.setFinalComment(comment) }
+          setParsedComment={ (comment) => this.setFinalComment(comment) }
         />
       </div>
     );

@@ -11,7 +11,7 @@ export default class Mentions extends Component {
 
   static propTypes = {
     list: PropTypes.array.isRequired,
-    setFinalComment: PropTypes.func,
+    setParsedComment: PropTypes.func,
     mentionStyle: PropTypes.object,
     listContainerStyle: PropTypes.object,
     textareaStyle: PropTypes.object,
@@ -46,7 +46,7 @@ export default class Mentions extends Component {
 
       if (childNodes) {
         this.watchRegex(selection)
-        this.setFinalComment()
+        this.setParsedComment()
       }
     }
   }
@@ -176,7 +176,7 @@ export default class Mentions extends Component {
   selectUser(user) {
     const { userID, userName } = this.getUserDetails(user)
     this.insertMentionInText(userID, userName)
-    this.setFinalComment()
+    this.setParsedComment()
     this.showUserList(false)
   }
 
@@ -232,9 +232,9 @@ export default class Mentions extends Component {
   // Parses Final Comment
   // - - - -
 
-  setFinalComment() {
+  setParsedComment() {
     const commenttext = this.generateFinalComment(this.refs.textarea.refs.div)
-    this.props.setFinalComment(commenttext)
+    this.props.setParsedComment(commenttext)
   }
 
   generateFinalComment(DOMParent) {
@@ -242,7 +242,7 @@ export default class Mentions extends Component {
     const textareaNodes = DOMParent.childNodes
     for (let i = 0; i <	textareaNodes.length; i++) {
       if (textareaNodes[i].nodeName === "SPAN") {
-        finalComment += `[u:${textareaNodes[i].id}]`
+        finalComment += `[${textareaNodes[i].id}]`
       } else if (textareaNodes[i].nodeName === "BR" && i !== (textareaNodes.length-1)) {
         finalComment += "\n"
       } else {
