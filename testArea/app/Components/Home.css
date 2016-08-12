@@ -1,3 +1,24 @@
 .container {
   padding: 15px 25% 0 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.sendButton {
+  background-color: white;
+  border: #00A0EE solid 1px;
+  color: #00A0EE;
+  border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  margin-bottom: 20px;
+  text-align: center;
+  line-height: 28px;
+  font-family: Lato, sans-serif;
+  cursor: default;
+}
+
+.sendButton:active {
+  background-color: #E1F5FF;
 }

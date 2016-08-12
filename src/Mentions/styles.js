@@ -6,7 +6,7 @@ export default {
   defaultMentionStyle: {
     color: "#00A0EE",
     fontFamily: "lato, sans-serif",
-    background: "rgb(202, 238, 255)",
+    background: "#E1F5FF",
     borderRadius: "5px",
     padding: "0 5px 0 5px",
   },

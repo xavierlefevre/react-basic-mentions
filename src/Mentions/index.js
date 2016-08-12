@@ -11,6 +11,7 @@ export default class Mentions extends Component {
 
   static propTypes = {
     list: PropTypes.array.isRequired,
+    setFinalComment: PropTypes.func,
     mentionStyle: PropTypes.object,
     listContainerStyle: PropTypes.object,
     textareaStyle: PropTypes.object,
@@ -45,6 +46,7 @@ export default class Mentions extends Component {
 
       if (childNodes) {
         this.watchRegex(selection)
+        this.setFinalComment()
       }
     }
   }
@@ -174,6 +176,7 @@ export default class Mentions extends Component {
   selectUser(user) {
     const { userID, userName } = this.getUserDetails(user)
     this.insertMentionInText(userID, userName)
+    this.setFinalComment()
     this.showUserList(false)
   }
 
@@ -226,11 +229,12 @@ export default class Mentions extends Component {
   }
 
   // - - - -
-  // Handle Post Comment
+  // Parses Final Comment
   // - - - -
 
-  onCommentPost() {
+  setFinalComment() {
     const commenttext = this.generateFinalComment(this.refs.textarea.refs.div)
+    this.props.setFinalComment(commenttext)
   }
 
   generateFinalComment(DOMParent) {
