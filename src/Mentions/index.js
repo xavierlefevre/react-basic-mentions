@@ -12,6 +12,10 @@ export default class Mentions extends Component {
   static propTypes = {
     list: PropTypes.array.isRequired,
     setParsedComment: PropTypes.func,
+    unactiveListMessage: PropTypes.string,
+    emptyListMessage: PropTypes.string,
+    // Elements CSS styles
+    emptyMessageStyle: PropTypes.string,
     mentionStyle: PropTypes.object,
     listContainerStyle: PropTypes.object,
     textareaStyle: PropTypes.object,
@@ -263,6 +267,14 @@ export default class Mentions extends Component {
   // Render View
   // - - - -
 
+  renderEmptyMessage(message) {
+    return (
+      <div style={ { ...styles.emptyMessageStyle, ...this.props.emptyMessageStyle } }>
+        { message }
+      </div>
+    )
+  }
+
   renderUserList(currentMatch) {
     const userList = this.props.list
     let items
@@ -277,7 +289,7 @@ export default class Mentions extends Component {
       newList = userList
     }
 
-    if (newList) {
+    if (newList && newList.length) {
       return newList.map((item, index)=>(
         <ListItem
           key={ index }
@@ -287,6 +299,8 @@ export default class Mentions extends Component {
           itemStyle={ this.props.itemStyle }
         />
       ))
+    } else {
+      return this.renderEmptyMessage(this.props.emptyListMessage || "No match")
     }
   }
 
@@ -300,7 +314,8 @@ export default class Mentions extends Component {
           onKeyUp={ (e) => this.onTextareaKeyUp(e) }
           onKeyDown={ (e) => this.onTextareaKeyDown(e) }
         />
-        <div style={ { ...styles.defaultListContainerStyle, ...this.props.listContainer } }>
+        <div style={ { ...styles.defaultListContainerStyle, ...this.props.listContainerStyle } }>
+          { !this.state.showUserList && this.renderEmptyMessage(this.props.unactiveListMessage || "You can mention a user with @") }
           { this.state.showUserList && this.renderUserList(this.currentMatch) }
         </div>
       </div>

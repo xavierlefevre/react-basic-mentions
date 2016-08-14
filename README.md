@@ -79,8 +79,9 @@ Check the "to improve" section below to understand what's remaining to do and no
 - [ ] - Allow for other "markers" and not only "@"
 - [ ] - Offer the possibility to put a placeholder in the textarea
 - [ ] - Option to filter the list through your own back-end calls
-- [ ] - Thinks of a loader
+- [ ] - Think of a loader
 - [ ] - Add a feedback on click or touch
+- [ ] - Message for the list container, when un-active or no match
 
 #### Readme
 
