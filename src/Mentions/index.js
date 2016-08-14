@@ -16,11 +16,11 @@ export default class Mentions extends Component {
     emptyListMessage: PropTypes.string,
     placeholder: PropTypes.string,
     // Elements CSS styles
-    emptyMessageStyle: PropTypes.object,
+    textareaStyle: PropTypes.object,
     placeholderStyle: PropTypes.object,
     mentionStyle: PropTypes.object,
     listContainerStyle: PropTypes.object,
-    textareaStyle: PropTypes.object,
+    emptyMessageStyle: PropTypes.object,
     itemContainerStyle: PropTypes.object,
     itemStyle: PropTypes.object,
   };
