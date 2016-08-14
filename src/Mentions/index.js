@@ -14,8 +14,10 @@ export default class Mentions extends Component {
     setParsedComment: PropTypes.func,
     unactiveListMessage: PropTypes.string,
     emptyListMessage: PropTypes.string,
+    placeholder: PropTypes.string,
     // Elements CSS styles
-    emptyMessageStyle: PropTypes.string,
+    emptyMessageStyle: PropTypes.object,
+    placeholderStyle: PropTypes.object,
     mentionStyle: PropTypes.object,
     listContainerStyle: PropTypes.object,
     textareaStyle: PropTypes.object,
@@ -308,7 +310,8 @@ export default class Mentions extends Component {
     return (
       <div style={ styles.containerStyle }>
         <Textarea
-          placeholder={ "Enter a comment" }
+          placeholder={ this.props.placeholder }
+          placeholderStyle={ this.props.placeholderStyle }
           ref="textarea"
           textareaStyle={ this.props.textareaStyle }
           onKeyUp={ (e) => this.onTextareaKeyUp(e) }

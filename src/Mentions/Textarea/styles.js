@@ -14,4 +14,7 @@ export default {
     userSelect: 'text',
     outline: 'none',
   },
+  defaultPlaceholderStyle: {
+    color: '#ADADAD',
+  }
 }
