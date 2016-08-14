@@ -114,6 +114,12 @@ export default class Mentions extends Component {
     let currentMatch
     let match
 
+    // When typing fast, two keydown can happen before the two keyup
+    // Creating an issue with the logic to find the proper match
+    // To prevent that, if the text did not change between those two events,
+    // there is no need to continue
+    if (this.text && (this.text === text)) return
+
     while ((match = MENTION_REGEX.exec(text)) != null) {
       matchArray.push(match)
     }
@@ -135,6 +141,8 @@ export default class Mentions extends Component {
     this.editedNode = selection.anchorNode
     // Updates the match array for the future comparison
     this.matchArray = matchArray
+    // Updates the current text
+    this.text = text
 
     if (currentMatch) {
       // Updates the current match in order to know what to replace it in the text later

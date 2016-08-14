@@ -72,6 +72,7 @@ Check the "to improve" section below to understand what's remaining to do and no
 - [ ] - Refine which key when hit can delete a mentionned user
 - [ ] - The first time you hit "enter" at the end of the textarea, it won't yet break the line, the following "enter" will work
 - [ ] - If the user selects half of a mention and a bit of other texts, then deletes, it won't make the mention disappear
+- [X] - When the user types very fast to mention, it can disrupt the logic and hide the list
 
 #### Features
 
