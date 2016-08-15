@@ -28,6 +28,9 @@ And then add it somewhere in your JSX:
 />
 ```
 
+It should then, look like this (with the default styling):
+![Example](https://xavierlefevre.github.io/react-basic-mentions/Images/example.png)
+
 ### Props
 
 #### Main props
