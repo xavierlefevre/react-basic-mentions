@@ -64,6 +64,7 @@ export default class Textarea extends Component {
           }
         } }
         contentEditable
+        spellCheck="false"
         onCopy={ (clipboard) => {
           // TODO think a proper logic for the copy/paste action
           // Copy, and cut, can be blocked from inside the div, to not have weird behaviors like on iOS

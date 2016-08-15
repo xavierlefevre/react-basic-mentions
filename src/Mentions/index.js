@@ -144,6 +144,9 @@ export default class Mentions extends Component {
           i = matchArray.length
         }
       })
+    } else if (!this.editedNode || this.editedNode.id === "div") {
+      // At init of the textarea, in case a @ is typed at first, to make it work
+      currentMatch = matchArray[0]
     }
 
     // Updates the edited node, to know which node needs to receive a mention
