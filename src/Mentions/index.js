@@ -144,8 +144,6 @@ export default class Mentions extends Component {
           i = matchArray.length
         }
       })
-    } else if (matchArray.length === 1) {
-      currentMatch = matchArray[0]
     }
 
     // Updates the edited node, to know which node needs to receive a mention
@@ -154,10 +152,10 @@ export default class Mentions extends Component {
     this.matchArray = matchArray
     // Updates the current text
     this.text = text
+    // Updates the current match in order to replace the appropriate element in the textarea later
+    this.currentMatch = currentMatch
 
     if (currentMatch) {
-      // Updates the current match in order to replace the appropriate element in the textarea later
-      this.currentMatch = currentMatch
       this.debouncedFetchUsers()
     } else {
       this.cancelFetch()
