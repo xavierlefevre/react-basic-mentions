@@ -156,10 +156,8 @@ export default class Mentions extends Component {
     this.text = text
 
     if (currentMatch) {
-      // Updates the current match in order to know what to replace it in the text later
+      // Updates the current match in order to replace the appropriate element in the textarea later
       this.currentMatch = currentMatch
-      // Removes the @ and potential end spaces
-      const currentMatchText = currentMatch[1] && currentMatch[1].substring(1).trim()
       this.debouncedFetchUsers()
     } else {
       this.cancelFetch()
