@@ -9,6 +9,11 @@ const MENTION_REGEX = /(@([A-z]+)(\s[A-z]+|\s){0,2}|@)/gi
 
 export default class Mentions extends Component {
 
+  static defaultProps = {
+    unactiveListMessage: "You can mention a user with @",
+    emptyListMessage: "No match",
+  }
+
   static propTypes = {
     list: PropTypes.array.isRequired,
     setParsedComment: PropTypes.func,
@@ -302,7 +307,7 @@ export default class Mentions extends Component {
         />
       ))
     } else {
-      return this.renderEmptyMessage(this.props.emptyListMessage || "No match")
+      return this.renderEmptyMessage(this.props.emptyListMessage)
     }
   }
 
@@ -318,7 +323,7 @@ export default class Mentions extends Component {
           onKeyDown={ (e) => this.onTextareaKeyDown(e) }
         />
         <div style={ { ...styles.defaultListContainerStyle, ...this.props.listContainerStyle } }>
-          { !this.state.showUserList && this.renderEmptyMessage(this.props.unactiveListMessage || "You can mention a user with @") }
+          { !this.state.showUserList && this.renderEmptyMessage(this.props.unactiveListMessage) }
           { this.state.showUserList && this.renderUserList(this.currentMatch) }
         </div>
       </div>
