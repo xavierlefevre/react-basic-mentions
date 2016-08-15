@@ -32,58 +32,40 @@ And then add it somewhere in your JSX:
 
 #### Main props
 
-The array list from which to mention, must include a "name" and an "id" property, the first for display, the second as the key for your API
-```
-list: PropTypes.array.isRequired
-```
-Setter building the final comment all along the typing of the comment, in order to retrieve it and send it to your API
-If the comment is : Hello Daniel, How are you?
-The parsedComment is : Hello [144342], how are you?
-```
-setParsedComment: PropTypes.func
-```
-The placeholder of the textarea
-```
-placeholder: PropTypes.string
-```
-The message to display when the user does not try to mention
-```
-unactiveListMessage: PropTypes.string
-```
-The message to display when there are no other matching elements of the list
-```
-emptyListMessage: PropTypes.string
+```javascript
+// The array list from which to mention, must include a "name" and an "id" property, the first for display, the second as the key for your API
+list: PropTypes.array.isRequired,
+// Setter building the final comment all along the typing of the comment, in order to retrieve it and send it to your API
+// If the comment is : Hello Daniel, How are you?
+// The parsedComment is : Hello [144342], how are you?
+setParsedComment: PropTypes.func,
+// The placeholder of the textarea
+placeholder: PropTypes.string,
+// The message to display when the user does not try to mention
+unactiveListMessage: PropTypes.string,
+// The message to display when there are no other matching elements of the list
+emptyListMessage: PropTypes.string,
+// You can change the mention trigger, by default "@", by setting this prop
+mentionTrigger: PropTypes.string,
 ```
 
 #### Style props
 
-The style of the textarea
-```
-textareaStyle: PropTypes.object
-```
-The style of the textarea div when the placeholder is displayed
-```
-placeholderStyle: PropTypes.object
-```
-The style of the mentionned name, by default the text is blue, and the background light-blue
-```
-mentionStyle: PropTypes.object
-```
-The style of the container around the list
-```
-listContainerStyle: PropTypes.object
-```
-The style of the message when the list is not displayed
-```
-emptyMessageStyle: PropTypes.object
-```
-The style around each item of the list
-```
-itemContainerStyle: PropTypes.object
-```
-The style of the item itself
-```
-itemStyle: PropTypes.object
+```javascript
+// The style of the textarea
+textareaStyle: PropTypes.object,
+// The style of the textarea div when the placeholder is displayed
+placeholderStyle: PropTypes.object,
+// The style of the mentionned name, by default the text is blue, and the background light-blue
+mentionStyle: PropTypes.object,
+// The style of the container around the list
+listContainerStyle: PropTypes.object,
+// The style of the message when the list is not displayed
+emptyMessageStyle: PropTypes.object,
+// The style around each item of the list
+itemContainerStyle: PropTypes.object,
+// The style of the item itself
+itemStyle: PropTypes.object,
 ```
 
 ### To notice
@@ -100,6 +82,8 @@ What did I do differently?
 Check the "to improve" section below to understand what's remaining to do and not yet perfect
 
 ### To improve
+
+#### Key
 
 - [X] - Retrieve the full comment from the parent component
 
