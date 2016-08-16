@@ -1,4 +1,5 @@
 src
 testArea
 .gitignore
+.babelrc
 webpack.config.js

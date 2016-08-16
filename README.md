@@ -17,7 +17,7 @@ npm install react-basic-mentions --save
 Import the package in the react component where you need it:
 
 ```javascript
-import { Mentions } from 'react-basic-mentions'
+import { Mentions } from 'react-basic-mentions/lib'
 ```
 
 And then add it somewhere in your JSX:
