@@ -4,8 +4,6 @@ React Basic Mentions is a first shot at a mention system : a user can mention so
 
 The user will enter a comment in the text-area, and when needed mention someone with a "@". The list of potential users will appear below the text-area, and on select, the matching string will be replaced by the name of the user with a specific style. Any modification to the mentioned user will remove it.
 
-**/!\  NOT YET AVAILABLE ON NPM  /!\**
-
 ### Getting started
 
 Install _react-basic-mentions_ package with NPM:
@@ -54,6 +52,7 @@ mentionTrigger: PropTypes.string,
 
 #### Style props
 
+There is a default styling for all these elements:
 ```javascript
 // The style of the text-area
 textareaStyle: PropTypes.object,
@@ -110,6 +109,7 @@ Check the "to improve" section below to understand what's remaining to do and no
 
 #### Readme
 
-- [ ] - Show a picture of the component
+- [X] - Show a picture of the component
+- [ ] - In GH Pages, set up a test zone
 - [ ] - Detail default style
 - [ ] - Give examples
