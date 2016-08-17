@@ -1,6 +1,6 @@
 {
   "name": "react-basic-mentions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple mention plugin for react",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,16 @@
     "watch:test": "webpack -d --watch",
     "build:test": "webpack -p"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xavierlefevre/react-basic-mentions"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "mentions",
+    "react-component"
+  ],
   "author": "Xavier Lefevre",
   "license": "ISC",
   "dependencies": {
